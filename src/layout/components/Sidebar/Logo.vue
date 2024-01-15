@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import logoImg from '@/assets/logo/主页logo.jpg'
+import logoImg from '@/assets/logo/logo.jpg'
 import variables from '@/assets/styles/variables.scss'
 
 export default {
@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-      title: '项目支撑管理系统',
+      title: '启铭星防护查询系统',
       logo: logoImg
     }
   }

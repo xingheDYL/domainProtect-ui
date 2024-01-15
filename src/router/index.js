@@ -116,34 +116,6 @@ export const dynamicRoutes = [
     ]
   },
   {
-    path: '/system/project-auth',
-    component: Layout,
-    hidden: true,
-    permissions: ['system:project:edit'],
-    children: [
-      {
-        path: 'user/:projectId(\\d+)',
-        component: () => import('@/views/system/project/authUser'),
-        name: 'AuthUser',
-        meta: {title: '分配用户', activeMenu: '/system/project'}
-      }
-    ]
-  },
-  {
-    path: '/system/queryUserProject',
-    component: Layout,
-    hidden: true,
-    permissions: ['system:project:query'],
-    children: [
-      {
-        path: ':userId(\\d+)',
-        component: () => import('@/views/system/user/projectDetail'),
-        name: 'QueryUserProject',
-        meta: {title: '查看用户支撑项目', activeMenu: '/system/user'}
-      }
-    ]
-  },
-  {
     path: '/system/dict-data',
     component: Layout,
     hidden: true,

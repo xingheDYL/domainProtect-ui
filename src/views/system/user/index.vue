@@ -148,9 +148,6 @@
                   <el-dropdown-item command="handleAuthRole" icon="el-icon-circle-check"
                                     v-hasPermi="['system:user:edit']">分配角色
                   </el-dropdown-item>
-                  <el-dropdown-item command="handleQueryProject" icon="el-icon-circle-check"
-                                    v-hasPermi="['system:project:edit']">查看个人项目
-                  </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </template>
@@ -176,28 +173,16 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="归属部门" prop="deptId">
-              <treeselect v-model="form.deptId" :options="deptOptions" :show-count="true" placeholder="请选择归属部门"/>
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="12">
             <el-form-item label="工号" prop="jobNumber">
               <el-input v-model="form.jobNumber" placeholder="请输入工号"/>
             </el-form-item>
+
           </el-col>
-          <el-col :span="12">
-            <el-form-item label="项目">
-              <el-select v-model="form.projectIds" multiple placeholder="请选择项目">
-                <el-option
-                  v-for="item in projectOptions"
-                  :key="item.projectId"
-                  :label="item.projectName"
-                  :value="item.projectId"
-                  :disabled="item.status === 1"
-                ></el-option>
-              </el-select>
+        </el-row>
+        <el-row>
+          <el-col :span="24">
+            <el-form-item label="归属部门" prop="deptId">
+              <treeselect v-model="form.deptId" :options="deptOptions" :show-count="true" placeholder="请选择归属部门"/>
             </el-form-item>
           </el-col>
         </el-row>
@@ -585,11 +570,6 @@ export default {
         this.title = "修改用户";
         this.form.password = "";
       });
-    },
-    /** 查看项目按钮操作 */
-    handleQueryProject: function (row) {
-      const userId = row.userId;
-      this.$router.push("/system/queryUserProject/" + userId);
     },
     /** 重置密码按钮操作 */
     handleResetPwd(row) {

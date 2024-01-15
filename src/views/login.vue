@@ -2,15 +2,15 @@
   <div class="login">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
       <div style="text-align: center">
-        <img src="../assets/logo/科大国创logo.png">
-        <h3 class="title">项目支撑管理系统</h3>
+        <img src="../assets/logo/logo.jpg" style="height: 50%;width: 50%" alt="">
+        <h3 class="title">启铭星防护查询系统</h3>
       </div>
       <el-form-item prop="username">
         <el-input
           v-model="loginForm.username"
           type="text"
           auto-complete="off"
-          placeholder="账号">
+          placeholder="请输入账号">
           <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon"/>
         </el-input>
       </el-form-item>
@@ -19,25 +19,12 @@
           v-model="loginForm.password"
           type="password"
           auto-complete="off"
-          placeholder="密码"
+          placeholder="请输入密码"
           @keyup.enter.native="handleLogin">
           <svg-icon slot="prefix" icon-class="password" class="el-input__icon input-icon"/>
         </el-input>
       </el-form-item>
-      <el-form-item prop="code" v-if="captchaEnabled">
-        <el-input
-          v-model="loginForm.code"
-          auto-complete="off"
-          placeholder="验证码"
-          style="width: 63%"
-          @keyup.enter.native="handleLogin">
-          <svg-icon slot="prefix" icon-class="validCode" class="el-input__icon input-icon"/>
-        </el-input>
-        <div class="login-code">
-          <img :src="codeUrl" @click="getCode" class="login-code-img"/>
-        </div>
-      </el-form-item>
-      <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">记住密码</el-checkbox>
+      <el-checkbox v-model="loginForm.rememberMe" style="margin:0 0 25px 0;">记住密码</el-checkbox>
       <el-form-item style="width:100%;">
         <el-button
           :loading="loading"
@@ -52,14 +39,13 @@
     </el-form>
     <!--  底部  -->
     <div class="el-login-footer">
-      <span>Copyright © 2023 段亚龙</span>
+      <span>Copyright © 2023 汪启铭</span>
       <a href="https://beian.miit.gov.cn" target="_blank"> 皖ICP备2021015742号</a>
     </div>
   </div>
 </template>
 
 <script>
-import {getCodeImg} from "@/api/login";
 import Cookies from "js-cookie";
 import {encrypt, decrypt} from '@/utils/jsencrypt'
 
@@ -69,11 +55,9 @@ export default {
     return {
       codeUrl: "",
       loginForm: {
-        username: "admin",
-        password: "admin123",
-        rememberMe: false,
-        code: "",
-        uuid: ""
+        username: "common",
+        password: "123456",
+        rememberMe: false
       },
       loginRules: {
         username: [
@@ -81,12 +65,9 @@ export default {
         ],
         password: [
           {required: true, trigger: "blur", message: "请输入您的密码"}
-        ],
-        code: [{required: true, trigger: "change", message: "请输入验证码"}]
+        ]
       },
       loading: false,
-      // 验证码开关
-      captchaEnabled: true,
       redirect: undefined
     };
   },
@@ -99,20 +80,9 @@ export default {
     }
   },
   created() {
-    this.getCode();
     this.getCookie();
   },
   methods: {
-    getCode() {
-      getCodeImg().then(res => {
-        this.captchaEnabled = res.captchaEnabled === undefined ? true : res.captchaEnabled;
-        if (this.captchaEnabled) {
-          // this.codeUrl = "data:image/gif;base64," + res.img;
-          this.codeUrl = res.img;
-          this.loginForm.uuid = res.uuid;
-        }
-      });
-    },
     getCookie() {
       const username = Cookies.get("username");
       const password = Cookies.get("password");
@@ -140,10 +110,7 @@ export default {
             this.$router.push({path: this.redirect || "/"}).catch(() => {
             });
           }).catch(() => {
-            this.loading = false;
-            if (this.captchaEnabled) {
-              this.getCode();
-            }
+            this.loading = false
           });
         }
       });
@@ -158,13 +125,12 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
-  //background-image: url("../assets/images/login-background.jpg");
   background: white;
   background-size: cover;
 }
 
 .title {
-  margin: 0px auto 30px auto;
+  margin: 0 auto 30px auto;
   text-align: center;
   font-size: 25px;
   color: #707070;

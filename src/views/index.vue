@@ -2,16 +2,25 @@
   <div class="app-container home">
     <el-row :gutter="20">
       <el-col :sm="24" :lg="12" style="padding-left: 20px">
-        <h2>项目支撑管理系统</h2>
-        <p>本系统主要分成项目管理、人员管理、权限控制、日志管理四个大部分。
-          <br>团队管理人员可以通过项目管理、人员管理对项目和员工进行增删改查操作，将具体员工分配到某个具体的项目，设置其项目支撑时间等；
-          同时根据不同的登录用户权限来展示不同的页面，方便不同职级的人员可以更快速的找到自己需求的功能以及限制部分职级人员的数据权限。
+        <h2>启铭星防护查询系统</h2>
+        <p>
+          启铭星1.1.0版本正式推出，强大的数据资源，支持输入域名查询防护产品，通过测试目前查询功能具备百分百准确性。
+          <br>
+          <b>功能优势：</b><br>
+          1.统计了300多个防护产品信息，具有准确性，广泛性；<br>
+          2.针对网宿，知道创宇，奇安信等通过cname接入的防护产品几乎全覆盖；<br>
+          3.具有迭代性，不断更新，运用强大的数据支撑；<br>
+          <b>目前弊端：</b><br>
+          1.暂时不具备批量查询功能；<br>
+          2.针对阿里云，腾讯云，云盾等通过IP接入的产品不具备查询功能，是接下来重点方向；<br>
+          1.1.1版本更新预热<br>
+          1.开启批量查询功能；<br>
+          2.更新防护数据库<br>
         </p>
         <p>
           <b>当前版本:</b> <span>v{{ version }}</span>
         </p>
       </el-col>
-
       <el-col :sm="24" :lg="12" style="padding-left: 50px">
         <el-row>
           <el-col :span="12">
@@ -25,7 +34,7 @@
               <li>SpringBoot</li>
               <li>Spring Security</li>
               <li>JWT</li>
-              <li>Mybatis</li>
+              <li>Mybatis-Plus</li>
               <li>...</li>
             </ul>
           </el-col>
@@ -52,62 +61,57 @@
             <span>更新日志</span>
           </div>
           <el-collapse accordion>
-            <el-collapse-item title="v1.1.1 - 2023-04-25">
+            <el-collapse-item title="v1.1.0 - 2024-01-15">
               <ol>
                 <li>部署到云服务器</li>
               </ol>
             </el-collapse-item>
-            <el-collapse-item title="v1.1.0 - 2023-04-24">
+            <el-collapse-item title="v1.0.9 - 2024-01-14">
               <ol>
                 <li>重构后端分页列表方法，优化其余代码</li>
               </ol>
             </el-collapse-item>
-            <el-collapse-item title="v1.0.9 - 2023-04-23">
+            <el-collapse-item title="v1.0.7 - 2024-01-13">
               <ol>
                 <li>重构前端代码，将组件封装成公共组件</li>
               </ol>
             </el-collapse-item>
-            <el-collapse-item title="v1.0.8 - 2023-04-21">
+            <el-collapse-item title="v1.0.7 - 2024-01-12">
               <ol>
-                <li>在项目管理中添加分配人员功能</li>
+                <li>增加域名解析管理</li>
               </ol>
             </el-collapse-item>
-            <el-collapse-item title="v1.0.7 - 2023-04-19">
+            <el-collapse-item title="v1.0.6 - 2024-01-11">
+              <ol>
+                <li>增加域名防护管理</li>
+              </ol>
+            </el-collapse-item>
+            <el-collapse-item title="v1.0.5 - 2024-01-10">
               <ol>
                 <li>增加菜单管理</li>
               </ol>
             </el-collapse-item>
-            <el-collapse-item title="v1.0.6 - 2023-04-13">
-              <ol>
-                <li>增加项目管理基础增删改查</li>
-              </ol>
-            </el-collapse-item>
-            <el-collapse-item title="v1.0.5 - 2023-04-12">
-              <ol>
-                <li>增加日志管理</li>
-              </ol>
-            </el-collapse-item>
-            <el-collapse-item title="v1.0.4 - 2023-04-10">
+            <el-collapse-item title="v1.0.4 - 2024-01-09">
               <ol>
                 <li>增加角色管理</li>
               </ol>
             </el-collapse-item>
-            <el-collapse-item title="v1.0.3 - 2023-04-08">
+            <el-collapse-item title="v1.0.3 - 2024-01-08">
               <ol>
                 <li>增加部门管理</li>
               </ol>
             </el-collapse-item>
-            <el-collapse-item title="v1.0.2 - 2023-04-07">
+            <el-collapse-item title="v1.0.2 - 2023-01-07">
               <ol>
                 <li>增加人员管理</li>
               </ol>
             </el-collapse-item>
-            <el-collapse-item title="v1.0.1 - 2023-04-05">
+            <el-collapse-item title="v1.0.1 - 2024-01-07">
               <ol>
                 <li>增加登录校验</li>
               </ol>
             </el-collapse-item>
-            <el-collapse-item title="v1.0.0 - 2023-04-03">
+            <el-collapse-item title="v1.0.0 - 2024-01-07">
               <ol>
                 <li>初始化项目</li>
               </ol>
@@ -125,7 +129,7 @@ export default {
   data() {
     return {
       // 版本号
-      version: "1.1.1"
+      version: "1.1.0"
     };
   },
 };
@@ -166,7 +170,7 @@ export default {
   }
 
   h4 {
-    margin-top: 0px;
+    margin-top: 0;
   }
 
   h2 {

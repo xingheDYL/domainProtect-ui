@@ -87,7 +87,7 @@ export function updateUserProfile(data) {
   })
 }
 
-// 用户密码重置
+// 用户密码更新
 export function updateUserPwd(oldPassword, newPassword) {
   const data = {
     oldPassword,
@@ -131,14 +131,5 @@ export function deptTreeSelect() {
   return request({
     url: '/system/user/deptTree',
     method: 'get'
-  })
-}
-
-// 查询人员支撑项目
-export function listUserProject(query) {
-  return request({
-    url: '/system/user/listUserProject',
-    method: 'get',
-    params: query
   })
 }
