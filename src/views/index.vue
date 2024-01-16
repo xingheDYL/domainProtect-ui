@@ -16,6 +16,9 @@
           1.1.1版本更新预热<br>
           1.开启批量查询功能；<br>
           2.更新防护数据库<br>
+          <b>问题修复：</b><br>
+          1.修复了针对一部分cname识别码过长问题<br>
+          2.增添了部分上海云盾产品信息
         </p>
         <p>
           <b>当前版本:</b> <span>v{{ version }}</span>
@@ -61,6 +64,11 @@
             <span>更新日志</span>
           </div>
           <el-collapse accordion>
+            <el-collapse-item title="v1.1.0 - 2024-01-16">
+              <ol>
+                <li>完善域名解析逻辑</li>
+              </ol>
+            </el-collapse-item>
             <el-collapse-item title="v1.1.0 - 2024-01-15">
               <ol>
                 <li>部署到云服务器</li>
@@ -125,14 +133,14 @@
 
 <script>
 export default {
-  name: "Index",
+  name: 'Index',
   data() {
     return {
       // 版本号
-      version: "1.1.0"
-    };
-  },
-};
+      version: '1.1.1'
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
