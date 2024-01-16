@@ -8,7 +8,7 @@
           <el-form-item label="域名" prop="keyword">
             <el-input
               v-model="queryParams.domain" placeholder="请输入域名" clearable style="width: 240px"
-              @keyup.enter.native="handleQuery"/>
+              @keyup.enter.native="handleQuery" @clear="handleQuery"/>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">解析</el-button>

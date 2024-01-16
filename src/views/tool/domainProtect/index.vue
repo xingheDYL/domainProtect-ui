@@ -10,7 +10,8 @@
               placeholder="请输入CNAME关键词"
               clearable
               style="width: 240px"
-              @keyup.enter.native="handleQuery"/>
+              @keyup.enter.native="handleQuery"
+              @clear="handleQuery"/>
           </el-form-item>
           <el-form-item label="防护产品" prop="companyProduct">
             <el-input
@@ -18,7 +19,8 @@
               placeholder="请输入防护产品"
               clearable
               style="width: 240px"
-              @keyup.enter.native="handleQuery"/>
+              @keyup.enter.native="handleQuery"
+              @clear="handleQuery"/>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -179,10 +181,6 @@ export default {
       dateRange: [],
       // 表单参数
       form: {},
-      // defaultProps: {
-      //   children: "children",
-      //   label: "label"
-      // },
       // 用户导入参数
       upload: {
         // 是否显示弹出层（用户导入）
